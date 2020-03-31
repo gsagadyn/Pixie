@@ -1,0 +1,23 @@
+load 'Scripts/podfile.rb'
+
+install! 'cocoapods',
+:generate_multiple_pod_projects => true,
+:incremental_installation => false
+
+platform :ios, '11.0'
+inhibit_all_warnings!
+use_frameworks!
+
+# ----------------------------------------------------------------------------------------------------------------
+# Pods
+# ----------------------------------------------------------------------------------------------------------------
+
+target 'Pixie' do
+    PodfileDependency::resolve '../Pixie.podspec' do |name, properties|
+        pod "#{name}", properties, :inhibit_warnings => true
+    end
+    
+    target 'Pixie-Tests' do
+        inherit! :search_paths
+    end
+end

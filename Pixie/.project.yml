@@ -1,0 +1,65 @@
+name: Pixie
+settingGroups:
+  commonSettings:
+    SWIFT_VERSION: "5.2"
+  appSettings:
+    ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: $(inherited)
+    ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    CODE_SIGN_STYLE: Automatic
+    CODE_SIGN_IDENTITY: "iPhone Developer"
+    PRODUCT_BUNDLE_IDENTIFIER: com.pixie
+    PRODUCT_NAME: "$(TARGET_NAME)"
+    PROVISIONING_PROFILE_SPECIFIER: ""
+    TARGETED_DEVICE_FAMILY: "1,2"
+    CURRENT_PROJECT_VERSION: "1.0"
+    INFOPLIST_FILE: "Pixie/Supporting Files/Info.plist"
+settings:
+  base:
+    CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: YES
+attributes:
+  LastUpgradeCheck: 1020
+targets:
+  Pixie:
+    type: application
+    platform: iOS
+    deploymentTarget: "11.2"
+    sources: 
+      - path: Pixie
+    settings:
+      groups:
+        - commonSettings
+        - appSettings
+      configs:
+        Release:
+          CODE_SIGN_IDENTITY: "iPhone Distribution"
+          SWIFT_COMPILATION_MODE: "wholemodule"
+  Pixie-Tests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: 
+      - path: Pixie-Tests
+    dependencies:
+      - target: Pixie
+    settings:
+      groups:
+        - commonSettings
+      configs:
+        Release:
+          SWIFT_COMPILATION_MODE: "wholemodule"
+schemes:
+  Pixie:
+    build:
+      targets:
+        Pixie: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets: [Pixie-Tests]
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+      
