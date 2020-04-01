@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
   s.name = 'Pixie'
-  s.version = '1.0.0'
+  s.version = '1.0.1'
   s.summary = 'Set of tools that make your developer\'s life easier'
   s.homepage = 'https://github.com/gsagadyn/Pixie'
   s.license = { :type => 'MIT', :file => 'LICENSE' }
-  s.author = { 'iOS Team ;)' => '' }
+  s.author = { 'iOS Team' => '' }
   s.source = { :git => 'https://github.com/gsagadyn/Pixie.git', :tag => s.version.to_s }
   s.ios.deployment_target = '11.0'
 
