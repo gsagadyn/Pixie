@@ -10,7 +10,7 @@ import Foundation
 extension String {
     private static var uppercaseLetters = CharacterSet.uppercaseLetters
     
-    internal var snakeCase: String {
+    public var snakeCase: String {
         unicodeScalars.reduce("") {
             let isUppercased = Self.uppercaseLetters.contains($1)
             let currentItem = isUppercased ? String($1).lowercased() : String($1)
