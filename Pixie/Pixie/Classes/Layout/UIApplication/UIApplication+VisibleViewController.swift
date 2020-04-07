@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIApplication {
-    public var headViewController: UIViewController? {
+    public var visibleViewController: UIViewController? {
         guard let window = keyWindow else { return nil }
         guard let vc = window.rootViewController else { return nil }
         return vc.visibleViewController
