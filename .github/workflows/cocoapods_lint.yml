@@ -1,4 +1,4 @@
-name: Swift
+name: CocoapodsLint
 
 on:
   pull_request:
