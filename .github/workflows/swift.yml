@@ -1,0 +1,15 @@
+name: Swift
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cocoapods lib lint
+      run: pod lib lint
