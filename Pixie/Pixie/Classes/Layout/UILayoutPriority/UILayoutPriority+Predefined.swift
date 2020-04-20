@@ -9,7 +9,7 @@ import UIKit
 
 extension UILayoutPriority {
     /// Required but breakable
-    public static let imperative = UILayoutPriority(rawValue: UILayoutPriority.required.rawValue - .leastNonzeroMagnitude)
+    public static let imperative = UILayoutPriority(rawValue: UILayoutPriority.required.rawValue - 0.1)
     
     /// DefaultHigh + 100.0
     public static let upperHigh = UILayoutPriority(rawValue: UILayoutPriority.defaultHigh.rawValue + 100.0)
@@ -26,6 +26,6 @@ extension UILayoutPriority {
     /// DefaultLow - 100.0
     public static let lowerLow = UILayoutPriority(rawValue: UILayoutPriority.defaultLow.rawValue - 100.0)
     
-    /// LeastNonzeroMagnitude
-    public static let optional = UILayoutPriority(rawValue: .leastNonzeroMagnitude)
+    /// 0.1
+    public static let optional = UILayoutPriority(rawValue: 0.1)
 }
