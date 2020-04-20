@@ -9,6 +9,6 @@ import UIKit
 
 extension CGSize {
     public func inset(by insets: UIEdgeInsets) -> CGSize {
-        self + CGSize(width: insets.width, height: insets.height)
+        self + CGSize(width: insets.horizontal, height: insets.vertical)
     }
 }

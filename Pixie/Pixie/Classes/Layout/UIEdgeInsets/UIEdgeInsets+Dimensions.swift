@@ -7,13 +7,11 @@
 
 import UIKit
 
-import UIKit
-
 extension UIEdgeInsets {
-    public var width: CGFloat {
+    public var horizontal: CGFloat {
         left + right
     }
-    public var height: CGFloat {
+    public var vertical: CGFloat {
         top + bottom
     }
 }
