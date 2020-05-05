@@ -16,16 +16,17 @@ extension UIViewController {
         let animator = DefaultAnimator(animationDuration: animated ? 0.3 : 0.0)
         embed(viewController: viewController, into: view, animator: animator)
     }
-    
-    public func embed(viewController: UIViewController?, into view: UIView, animator: EmbeddedViewControllerAnimator) {
+
+    public func embed(viewController: UIViewController?, into view: UIView, animator: EmbeddedViewControllerAnimator?) {
         view.layer.removeAllAnimations()
+        let animator = animator ?? DefaultAnimator(animationDuration: 0.0)
         let responders = view.subviews.reversed().map { $0.next }
         let vcs = responders.compactMap(as: UIViewController.self)
         let fromVc = vcs.first(where: { $0.parent != nil })
         let toVc = viewController
 
         guard fromVc !== toVc else { return }
-        
+
         fromVc?.willMove(toParent: nil)
         fromVc?.removeFromParent()
 
@@ -49,14 +50,14 @@ extension UIViewController {
 
 fileprivate struct DefaultAnimator: EmbeddedViewControllerAnimator {
     // MARK: - Fileprivate Properties
-    
+
     fileprivate let animationDuration: TimeInterval
-    
+
     // MARK: - Embedded View Controller Animator
-    
+
     fileprivate func animate(from: UIViewController?, to: UIViewController?, inside view: UIView, completed: @escaping () -> Void) {
         defer { completed() }
-        
+
         let fromView = from?.view
         fromView?.frame = view.bounds
         fromView.map { view.addSubview($0) }
@@ -66,7 +67,7 @@ fileprivate struct DefaultAnimator: EmbeddedViewControllerAnimator {
         toView.map { view.addSubview($0) }
 
         guard !animationDuration.isZero else { return }
-        
+
         let transition = CATransition()
         transition.duration = animationDuration
         transition.type = .fade
