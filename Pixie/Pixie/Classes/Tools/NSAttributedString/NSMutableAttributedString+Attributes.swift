@@ -8,8 +8,8 @@
 import UIKit
 
 extension NSMutableAttributedString {
-    public func set(_ attributes: [NSAttributedString.Key: Any], for subString: String) {
-        string.ranges(of: subString).forEach { set(attributes, onRange: $0) }
+    public func set(_ attributes: [NSAttributedString.Key: Any], for subString: String? = nil) {
+        string.ranges(of: subString ?? string).forEach { set(attributes, onRange: $0) }
     }
     
     public func set(_ attributes: [NSAttributedString.Key: Any], onRange range: Range<String.Index>) {
@@ -21,8 +21,8 @@ extension NSMutableAttributedString {
         setAttributes(attributes, range: range)
     }
     
-    public func add(_ attributes: [NSAttributedString.Key: Any], for subString: String) {
-        string.ranges(of: subString).forEach { add(attributes, onRange: $0) }
+    public func add(_ attributes: [NSAttributedString.Key: Any], for subString: String? = nil) {
+        string.ranges(of: subString ?? string).forEach { add(attributes, onRange: $0) }
     }
     
     public func add(_ attributes: [NSAttributedString.Key: Any], onRange range: Range<String.Index>) {
@@ -40,7 +40,7 @@ extension NSMutableAttributedString {
 // -----------------------------------------------------------------------------
 
 extension NSMutableAttributedString {
-    public func set(foregroundColor color: UIColor, for subString: String) {
+    public func set(foregroundColor color: UIColor, for subString: String? = nil) {
         set([.foregroundColor: color], for: subString)
     }
     
@@ -52,7 +52,7 @@ extension NSMutableAttributedString {
         set([.foregroundColor: color], onRange: range)
     }
     
-    public func add(foregroundColor color: UIColor, for subString: String) {
+    public func add(foregroundColor color: UIColor, for subString: String? = nil) {
         add([.foregroundColor: color], for: subString)
     }
     
@@ -70,7 +70,7 @@ extension NSMutableAttributedString {
 // -----------------------------------------------------------------------------
 
 extension NSMutableAttributedString {
-    public func set(font: UIFont, for subString: String) {
+    public func set(font: UIFont, for subString: String? = nil) {
         set([.font: font], for: subString)
     }
     
@@ -82,7 +82,7 @@ extension NSMutableAttributedString {
         set([.font: font], onRange: range)
     }
     
-    public func add(font: UIFont, for subString: String) {
+    public func add(font: UIFont, for subString: String? = nil) {
         add([.font: font], for: subString)
     }
     
@@ -100,7 +100,7 @@ extension NSMutableAttributedString {
 // -----------------------------------------------------------------------------
 
 extension NSMutableAttributedString {
-    public func set(backgroundColor color: UIColor, for subString: String) {
+    public func set(backgroundColor color: UIColor, for subString: String? = nil) {
         set([.backgroundColor: color], for: subString)
     }
     
@@ -112,7 +112,7 @@ extension NSMutableAttributedString {
         set([.backgroundColor: color], onRange: range)
     }
     
-    public func add(backgroundColor color: UIColor, for subString: String) {
+    public func add(backgroundColor color: UIColor, for subString: String? = nil) {
         add([.backgroundColor: color], for: subString)
     }
     
