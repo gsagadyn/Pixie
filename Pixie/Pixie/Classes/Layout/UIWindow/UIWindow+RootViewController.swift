@@ -1,5 +1,5 @@
 //
-//  UIWindow+RootViewController.swift.swift
+//  UIWindow+RootViewController.swift
 //  Pixie
 //
 //  Created by Grzegorz Sagadyn on 31/03/2020.
