@@ -12,7 +12,8 @@ extension Decimal {
         self = NSDecimalNumber(value: value).decimalValue
     }
     
-    public init?(posix: String) {
+    public init?(posix: String?) {
+        guard let posix = posix else { return nil }
         let pointers = CharacterSet(charactersIn: ",.")
         let components = posix.components(separatedBy: pointers)
         guard components.count <= 2 else { return nil }
