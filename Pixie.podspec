@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'Pixie'
-  s.version = '1.2.0'
+  s.version = '1.3.0'
   s.summary = 'Set of tools that make your developer\'s life easier'
   s.homepage = 'https://github.com/gsagadyn/Pixie'
   s.license = { :type => 'MIT', :file => 'LICENSE' }
