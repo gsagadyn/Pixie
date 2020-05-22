@@ -16,19 +16,20 @@ extension UIWindow {
         subtype: CATransitionSubtype? = nil,
         timingFunction: CAMediaTimingFunctionName = .easeInEaseOut,
         completion: ((Bool) -> Void)? = nil) {
-        
         guard rootViewController !== viewController else {
             completion?(false)
             return
         }
 
         guard duration.isNormal && UIApplication.shared.applicationState == .active else {
+            rootViewController?.dismiss(animated: false)
             rootViewController = viewController
             completion?(true)
             return
         }
 
         CATransaction.begin()
+        let src = rootViewController
         let transition = CATransition()
         transition.duration = duration
         transition.type = type
@@ -43,7 +44,11 @@ extension UIWindow {
             transition.beginTime = layerTime + delay
         }
 
-        CATransaction.setCompletionBlock { completion?(true) }
+        CATransaction.setCompletionBlock {
+            src?.dismiss(animated: false)
+            completion?(true)
+        }
+        
         layer.add(transition, forKey: nil)
         rootViewController = viewController
         CATransaction.commit()
