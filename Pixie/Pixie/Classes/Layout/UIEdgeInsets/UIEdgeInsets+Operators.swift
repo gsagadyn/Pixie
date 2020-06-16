@@ -16,7 +16,11 @@ extension UIEdgeInsets {
             right: lhs.right + rhs.right
         )
     }
-    
+
+    public static func += (lhs: inout UIEdgeInsets, rhs: UIEdgeInsets) {
+        lhs = lhs + rhs
+    }
+
     public static func - (lhs: UIEdgeInsets, rhs: UIEdgeInsets) -> UIEdgeInsets {
         UIEdgeInsets(
             top: lhs.top - rhs.top,
@@ -24,5 +28,9 @@ extension UIEdgeInsets {
             bottom: lhs.bottom - rhs.bottom,
             right: lhs.right - rhs.right
         )
+    }
+
+    public static func -= (lhs: inout UIEdgeInsets, rhs: UIEdgeInsets) {
+        lhs = lhs - rhs
     }
 }
