@@ -11,17 +11,22 @@ extension Decimal {
     public init(_ value: Float) {
         self = NSDecimalNumber(value: value).decimalValue
     }
-    
+
     public init?(posix: String?) {
         guard let posix = posix else { return nil }
-        let pointers = CharacterSet(charactersIn: ",.")
-        let components = posix.components(separatedBy: pointers)
-        guard components.count <= 2 else { return nil }
-        
-        let allowedCharacter = pointers + .init(charactersIn: "0123456789")
-        let trimmed = posix.components(separatedBy: allowedCharacter.inverted)
-        let value = trimmed.joined().replacingOccurrences(of: ",", with: ".")
         let locale = Locale(identifier: "en_US_POSIX")
-        self.init(string: value, locale: locale)
+
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = locale
+
+        let minusSign = numberFormatter.minusSign ?? ""
+        let decimalSeparator = numberFormatter.decimalSeparator ?? ""
+        let pointers = CharacterSet(charactersIn: "\(decimalSeparator),.")
+        let allowedCharacters = pointers + .init(charactersIn: "\(minusSign)-0123456789")
+
+        let trimmed = posix.components(separatedBy: allowedCharacters.inverted)
+        let components = trimmed.joined().components(separatedBy: pointers)
+        guard components.count <= 2 else { return nil }
+        self.init(string: components.joined(separator: "."), locale: locale)
     }
 }
