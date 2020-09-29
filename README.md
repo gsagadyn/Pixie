@@ -2,7 +2,8 @@
 
 [![Version](https://img.shields.io/cocoapods/v/Pixie.svg?style=flat)](https://cocoapods.org/pods/Pixie)
 [![License](https://img.shields.io/cocoapods/l/Pixie.svg?style=flat)](https://cocoapods.org/pods/Pixie)
-[![Platform](https://img.shields.io/cocoapods/p/Pixie.svg?style=flat)](https://cocoapods.org/pods/Pixie)
+[![Platform](https://img.shields.io/cocoapods/p/Pixie.svg?style=flat)](https://www.apple.com/pl/ios)
+[![SwiftPM](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 
 Set of tools that make your developer's life easier
 
