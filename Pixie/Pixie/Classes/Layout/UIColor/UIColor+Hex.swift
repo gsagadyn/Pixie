@@ -13,10 +13,10 @@ extension UIColor {
     public convenience init(hexString: String, default: UIColor = .clear) {
         let hexString = hexString.components(separatedBy: allowedCharacterSet.inverted).joined()
         
-        var int = UInt32()
-        Scanner(string: hexString).scanHexInt32(&int)
+        var int = UInt64()
+        Scanner(string: hexString).scanHexInt64(&int)
         
-        var result: (a: UInt32, r: UInt32, g: UInt32, b: UInt32)
+        var result: (a: UInt64, r: UInt64, g: UInt64, b: UInt64)
         switch hexString.count {
         case 3:
             result = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
@@ -26,10 +26,10 @@ extension UIColor {
             result = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
         default:
             let color = `default`.ciColor
-            let a = UInt32(color.alpha * 255.0)
-            let r = UInt32(color.red * 255.0)
-            let g = UInt32(color.green * 255.0)
-            let b = UInt32(color.blue * 255.0)
+            let a = UInt64(color.alpha * 255.0)
+            let r = UInt64(color.red * 255.0)
+            let g = UInt64(color.green * 255.0)
+            let b = UInt64(color.blue * 255.0)
             result = (a, r, g, b)
         }
         
