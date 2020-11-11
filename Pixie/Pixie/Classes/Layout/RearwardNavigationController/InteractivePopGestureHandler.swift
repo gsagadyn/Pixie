@@ -48,7 +48,7 @@ extension InteractivePopGestureHandler {
         guard gestureRecognizer === parent?.interactivePopGestureRecognizer else { return }
         guard Self.rollbackStates.contains(gestureRecognizer.state) else { return }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             guard let viewController = self.parent?.viewControllers.last else { return }
             self.parent?.interactivePopGestureInterrupted(viewController)
         }
