@@ -14,7 +14,6 @@ extension UIApplication {
 
     public func open(url: String?, options: [UIApplication.OpenExternalURLOptionsKey : Any] = [:], completionHandler completion: ((Bool) -> Void)? = nil) {
         guard let url = URL(unsafe: url) else { return }
-        guard canOpenURL(url) else { return }
         UIApplication.shared.open(url, options: options, completionHandler: completion)
     }
 }
