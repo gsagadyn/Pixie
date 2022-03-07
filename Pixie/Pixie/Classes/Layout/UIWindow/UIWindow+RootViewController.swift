@@ -22,7 +22,7 @@ extension UIWindow {
         }
 
         guard duration.isNormal && UIApplication.shared.applicationState == .active else {
-            rootViewController?.dismiss(animated: false)
+            rootViewController?.dismiss(force: true)
             rootViewController = viewController
             completion?(true)
             return
