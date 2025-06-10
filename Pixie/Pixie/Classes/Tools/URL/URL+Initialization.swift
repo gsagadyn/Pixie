@@ -9,7 +9,7 @@ import Foundation
 
 extension URL {
     public init?(unsafe: String?) {
-        guard let value = unsafe else { return nil }
+        guard let value = `unsafe` else { return nil }
         let escaped = value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? value
         guard let url = URL(string: value) ?? URL(string: escaped) else { return nil }
         self = url
